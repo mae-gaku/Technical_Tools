@@ -1,0 +1,6 @@
+docs
+README.md
+src/__pycache__
+src/models/__pycache__
+src/utils/__pycache__
+deploy

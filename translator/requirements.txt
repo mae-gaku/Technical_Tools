@@ -1,0 +1,7 @@
+transformers
+torch==1.7.1+cpu
+uWSGI
+flake8==3.9.2
+Flask==2.0.1
+Flask-Babel==2.0.0
+Flask-Cors==3.0.10
