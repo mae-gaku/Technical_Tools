@@ -1,0 +1,183 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Go file upload</title>
+        <style>
+            /* body {
+                width: 100%;
+            /* text-align:center;
+            margin: 80px; */
+
+            /* div{
+                text-align:center;
+                padding-right: 820px;
+            } */
+
+            .div1{
+                
+                display:inline-flex;
+            }
+            
+            .form1 {
+                padding: 0px 100px
+            }
+
+            .form2{
+                padding: 0px 100px
+            }
+            .cp_iptxt {
+                position: relative;
+                width: 80.33%;
+                /* margin: 40px 3%; */
+            }
+            .cp_iptxt input[type='text'] {
+                font: 15px/24px sans-serif;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 0.3em;
+                padding-left: 40px;
+                letter-spacing: 1px;
+                border: 0;
+            }
+            .cp_iptxt input[type='text']:focus {
+                outline: none;
+            }
+            .cp_iptxt input[type='text']:focus::after {
+                outline: none;
+            }
+            .cp_iptxt i {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 9px 5px;
+                transition: 0.3s;
+                color: #aaaaaa;
+            }
+            .cp_iptxt::after {
+                display: block;
+                width: 100%;
+                height: 4px;
+                margin-top: -1px;
+                content: '';
+                border-width: 0 1px 1px 1px;
+                border-style: solid;
+                border-color: #da3c41;
+            }
+
+
+            /* チェックボックス全体 */
+            .checknox-wrap {
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            user-select: none;
+            }
+
+            /* デフォルトチェックボックス非表示 */
+            .checknox-wrap input {
+            display: none;
+            }
+
+            /* チェックボックスのスタイル */
+            .checknox-wrap .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            border: 2px solid #000;
+            box-sizing: border-box;
+            }
+
+            /* チェックマーク作成 */
+            .checknox-wrap .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 4px;
+            top: 0px;
+            width: 5px;
+            height: 10px;
+            border: 2px solid #000;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            }
+
+            /* チェック時のスタイル */
+            .checknox-wrap input:checked + .checkmark {
+            border: 2px solid #000;
+            }
+
+            /* チェック時 チェックマーク表示 */
+            .checknox-wrap input:checked + .checkmark:after {
+            display: block;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="div1">
+        <form action="/xml_checkbox" method="POST" class="form1">
+            <h2>XML to TXT</h2>
+            <!-- <input type="checkbox" value="reading" name="xml_checkbox" />
+            <label for="checkbox">xml to txt</label> -->
+            <label class="checknox-wrap">
+                <input type="checkbox" name="xml_checkbox" value="yes"> 
+                <span class="checkmark"></span>
+                xml to txt
+            </label>
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="/delete_umatched_file" method="POST" class="form2">
+            <h2>Umatched file</h2>
+            <!-- <input type="checkbox" value="reading" name="delete_umatched_file" />
+            <label for="checkbox">Umatched file</label> -->
+
+            <label class="checknox-wrap">
+                <input type="checkbox" name="delete_umatched_file" value="yes">
+                <span class="checkmark"></span>
+                Umatched file
+            </label>
+
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        
+        <form action="/img_resize" method="POST" class="form3">
+            <h2>Resize Image</h2>
+            <label class="checknox-wrap">
+              <input type="checkbox" name="image" value="yes">
+              <span class="checkmark"></span>
+            resize images
+            </label>
+
+
+            <br>
+            <div class="cp_iptxt">
+            <input type="text" name="width" placeholder="Width:640">
+                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+            </div>
+            <br>
+            <div class="cp_iptxt">
+              <input type="text" name="height" placeholder="Height:640">
+              <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+    </body>
+</html>
+
+
