@@ -1,4 +1,4 @@
-## Available CV technology
+## Computer vision techniques that have been used
 
 
 ### Object Detection
@@ -15,9 +15,13 @@
 
 - YOLOR
 
+- YOLO-NAS
+
 - DTER
 
--
+- mmdetection
+
+- PaddleDetection
 
 
 ### Segmentation 
@@ -28,7 +32,7 @@
 
 - Paddle-seg
 
-- Mask-RCNN
+- Mask R-CNN
 
 - SAM
 
@@ -67,6 +71,7 @@
 
 - donut
 
+- nougat
 
 
 ### Super resolution
@@ -88,6 +93,13 @@
 
 - mediapipe
 
+### Traking
+
+- YOLOv8-traking
+
+- o-tracker
+
+
 ### Other
 
 - Detic
@@ -104,5 +116,51 @@
 
 - InstructBLIP
 
+- GRiT
 
+- torch-ort
+
+- CutLER
+
+- magic-copy
+
+- GALIP
+
+
+- prismer
+
+
+### Tool
+
+- cvat
+
+- labelImg
+
+- fyftyone
+
+
+
+### github
+
+
+
+- https://github.com/facebookresearch/CutLER
+
+- https://github.com/XPixelGroup/DiffBIR
+
+- https://github.com/kevmo314/magic-copy
+
+- https://github.com/facebookresearch/nougat
+
+- https://github.com/tobran/GALIP
+
+
+- https://github.com/facebookresearch/co-tracker
+
+- https://github.com/JialianW/GRiT
+
+- https://github.com/dinglufe/segment-anything-cpp-wrapper
+
+
+- https://github.com/NVlabs/prismer
 
