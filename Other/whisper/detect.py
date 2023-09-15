@@ -11,7 +11,7 @@ import whisper
 
 def whisper_model(audio_data):
     model = whisper.load_model("small")
-    # audio_file = "/home/gaku/whisper/001.mp3"
+    # audio_file = "001.mp3"
     result = model.transcribe(audio_data)
     translate_result = model.transcribe(audio_data,task="translate")
 

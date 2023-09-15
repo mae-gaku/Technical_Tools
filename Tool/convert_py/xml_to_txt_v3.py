@@ -25,118 +25,27 @@ def convert_pascal_to_yolo(xml_path, output_dir):
         for obj in root.findall("object"):
             # オブジェクトのクラス名を取得
             class_name = obj.find("name").text
+        
+            # オブジェクトのバウンディングボックスを取得
+            bbox = obj.find("bndbox")
+            xmin = float(bbox.find("xmin").text)
+            ymin = float(bbox.find("ymin").text)
+            xmax = float(bbox.find("xmax").text)
+            ymax = float(bbox.find("ymax").text)
             
-            # "body"クラスのみを処理
-            if class_name == "Shoes":
-                # オブジェクトのバウンディングボックスを取得
-                bbox = obj.find("bndbox")
-                xmin = float(bbox.find("xmin").text)
-                ymin = float(bbox.find("ymin").text)
-                xmax = float(bbox.find("xmax").text)
-                ymax = float(bbox.find("ymax").text)
-                
-                # バウンディングボックスの中心座標と幅・高さを計算
-                x_center = (xmin + xmax) / (2 * width)
-                y_center = (ymin + ymax) / (2 * height)
-                bbox_width = (xmax - xmin) / width
-                bbox_height = (ymax - ymin) / height
-                
-                # YOLO形式のテキスト行を生成
-                # class_id = class_mapping[class_name]
-                class_id = 3
-                yolo_line = f"{class_id} {x_center} {y_center} {bbox_width} {bbox_height}\n"
-                
-                # テキストファイルに書き込み
-                txt_file.write(yolo_line)
-
-            elif class_name == "Helmet":
-                # オブジェクトのバウンディングボックスを取得
-                bbox = obj.find("bndbox")
-                xmin = float(bbox.find("xmin").text)
-                ymin = float(bbox.find("ymin").text)
-                xmax = float(bbox.find("xmax").text)
-                ymax = float(bbox.find("ymax").text)
-                
-                # バウンディングボックスの中心座標と幅・高さを計算
-                x_center = (xmin + xmax) / (2 * width)
-                y_center = (ymin + ymax) / (2 * height)
-                bbox_width = (xmax - xmin) / width
-                bbox_height = (ymax - ymin) / height
-                
-                # YOLO形式のテキスト行を生成
-                # class_id = class_mapping[class_name]
-                class_id = 0
-                yolo_line = f"{class_id} {x_center} {y_center} {bbox_width} {bbox_height}\n"
-                
-                # テキストファイルに書き込み
-                txt_file.write(yolo_line)
-
-            elif class_name == "Vest":
-                # オブジェクトのバウンディングボックスを取得
-                bbox = obj.find("bndbox")
-                xmin = float(bbox.find("xmin").text)
-                ymin = float(bbox.find("ymin").text)
-                xmax = float(bbox.find("xmax").text)
-                ymax = float(bbox.find("ymax").text)
-                
-                # バウンディングボックスの中心座標と幅・高さを計算
-                x_center = (xmin + xmax) / (2 * width)
-                y_center = (ymin + ymax) / (2 * height)
-                bbox_width = (xmax - xmin) / width
-                bbox_height = (ymax - ymin) / height
-                
-                # YOLO形式のテキスト行を生成
-                # class_id = class_mapping[class_name]
-                class_id = 1
-                yolo_line = f"{class_id} {x_center} {y_center} {bbox_width} {bbox_height}\n"
-                
-                # テキストファイルに書き込み
-                txt_file.write(yolo_line)
+            # バウンディングボックスの中心座標と幅・高さを計算
+            x_center = (xmin + xmax) / (2 * width)
+            y_center = (ymin + ymax) / (2 * height)
+            bbox_width = (xmax - xmin) / width
+            bbox_height = (ymax - ymin) / height
             
-            elif class_name == "Gloves":
-                # オブジェクトのバウンディングボックスを取得
-                bbox = obj.find("bndbox")
-                xmin = float(bbox.find("xmin").text)
-                ymin = float(bbox.find("ymin").text)
-                xmax = float(bbox.find("xmax").text)
-                ymax = float(bbox.find("ymax").text)
-                
-                # バウンディングボックスの中心座標と幅・高さを計算
-                x_center = (xmin + xmax) / (2 * width)
-                y_center = (ymin + ymax) / (2 * height)
-                bbox_width = (xmax - xmin) / width
-                bbox_height = (ymax - ymin) / height
-                
-                # YOLO形式のテキスト行を生成
-                # class_id = class_mapping[class_name]
-                class_id = 2
-                yolo_line = f"{class_id} {x_center} {y_center} {bbox_width} {bbox_height}\n"
-                
-                # テキストファイルに書き込み
-                txt_file.write(yolo_line)
+            # YOLO形式のテキスト行を生成
+            # class_id = class_mapping[class_name]
+            class_id = 0
+            yolo_line = f"{class_id} {x_center} {y_center} {bbox_width} {bbox_height}\n"
             
-            elif class_name == "harness":
-                # オブジェクトのバウンディングボックスを取得
-                bbox = obj.find("bndbox")
-                xmin = float(bbox.find("xmin").text)
-                ymin = float(bbox.find("ymin").text)
-                xmax = float(bbox.find("xmax").text)
-                ymax = float(bbox.find("ymax").text)
-                
-                # バウンディングボックスの中心座標と幅・高さを計算
-                x_center = (xmin + xmax) / (2 * width)
-                y_center = (ymin + ymax) / (2 * height)
-                bbox_width = (xmax - xmin) / width
-                bbox_height = (ymax - ymin) / height
-                
-                # YOLO形式のテキスト行を生成
-                # class_id = class_mapping[class_name]
-                class_id = 4
-                yolo_line = f"{class_id} {x_center} {y_center} {bbox_width} {bbox_height}\n"
-                
-                # テキストファイルに書き込み
-                txt_file.write(yolo_line)
-
+            # テキストファイルに書き込み
+            txt_file.write(yolo_line)
 
 xml_dir = ""
 output_dir = ""
