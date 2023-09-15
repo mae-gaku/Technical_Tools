@@ -1,4 +1,4 @@
-## Computer vision techniques that have been used
+## Available CV technology
 
 
 ### Object Detection
