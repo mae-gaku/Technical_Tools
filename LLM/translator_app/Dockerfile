@@ -37,15 +37,4 @@ COPY --from=builder /usr/local/lib/python3.8/site-packages /usr/local/lib/python
 COPY --from=builder /usr/local/bin/uwsgi /usr/local/bin/uwsgi
 COPY --from=builder /mnt /mnt
 
-# Create new user and change the file permission
-RUN groupadd -g 1000 ocr && \
-    useradd -m -s /bin/bash -u 1000 -g 1000 ocr && \
-    chown -R ocr:ocr /mnt
-
-ENV PG_NAME translate
-ENV PG_VERSION 1.00
-
-USER ocr
-WORKDIR /mnt
-
 CMD ["/bin/bash", "-c", "uwsgi uwsgi.ini"]
