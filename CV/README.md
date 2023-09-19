@@ -101,6 +101,16 @@
 
 - mediapipe
 
+
+
+### Depth Estimation
+
+- monodepth2
+
+- BoostingMonocularDepth
+
+- ImageBind(depth estimation)
+
 ### Traking
 
 
