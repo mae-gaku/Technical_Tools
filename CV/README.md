@@ -23,6 +23,8 @@
 
 - PaddleDetection
 
+- YOLOv5-obb
+
 
 ### Segmentation 
 
@@ -38,7 +40,7 @@
 
 - FastSAM
 
-- MobildSAM
+- MobileSAM
 
 
 
@@ -48,11 +50,17 @@
 
 - Resnet
 
-- 
+- AlexNet
+
+- GoogLeNet Inception
+
+- MobileNet
 
 - YOLOv5-cls
 
 - YOLOv8-cls
+
+- Efficientnet
 
 - Efficientnetv2
 
@@ -95,9 +103,10 @@
 
 ### Traking
 
-- YOLOv8-traking
 
-- o-tracker
+- DeepSort
+
+- YOLOv8-traking
 
 
 ### Other
@@ -125,7 +134,6 @@
 - magic-copy
 
 - GALIP
-
 
 - prismer
 
@@ -164,3 +172,5 @@
 
 - https://github.com/NVlabs/prismer
 
+
+- https://github.com/hukaixuan19970627/yolov5_obb
