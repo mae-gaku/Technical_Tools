@@ -38,7 +38,3 @@ With Gradio UI:
 # uncomment the last line in Dockerfile CMD ["python", "gradio_app.py"]
 docker run -it -p 0.0.0.0:7860:7860 llama2.mojo
 ``` 
-
-## License
-
-MIT
