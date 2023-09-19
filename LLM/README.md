@@ -5,6 +5,8 @@
 
 - Llama.cpp
 
+- llama2.mojo
+
 - Code Llama
 
 - gpt4free
@@ -25,6 +27,7 @@
 
 - MetaTransformer
 
+- MetaGPT
 
 - nllb
 
