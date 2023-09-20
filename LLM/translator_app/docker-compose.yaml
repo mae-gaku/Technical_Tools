@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  translator:
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
+    volumes:
+      - ./:/mnt
+    ports:
+      - "5002:5000"
+    command: >
+      /bin/bash -c "uwsgi uwsgi.ini"
+    restart: always

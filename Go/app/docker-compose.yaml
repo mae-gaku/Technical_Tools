@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  web_app:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "go run main.go"
+    
+    restart: always

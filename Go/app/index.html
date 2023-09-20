@@ -1,0 +1,22 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Go file upload</title>
+        <style>
+            body {
+                width: 100%;
+            text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>file upload</h1>
+        <form id="form" enctype="multipart/form-data" action="/upload" method="POST">
+            <input type="file" name="file" class="input file-input" multiple>
+            <button class="button" type="submit">upload</button>
+        </form>
+        
+    </body>
+</html>

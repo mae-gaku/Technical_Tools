@@ -1,0 +1,21 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: sample_grafana
+    ports:
+      - 8888:3000
+    volumes:
+      - ./grafana:/var/lib/grafana
+
+  postgres:
+      image: postgres:12.7
+      container_name: sample_postgres
+      ports:
+        - 5432:5432
+      environment:
+        POSTGRES_USER: sample_user
+        POSTGRES_PASSWORD: sample_pass
+      volumes:
+        - ./initdb:/docker-entrypoint-initdb.d
+        - ./postgres:/var/lib/postgresql/data

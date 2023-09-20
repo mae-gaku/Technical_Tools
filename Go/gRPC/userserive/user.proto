@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package userservice;
+
+option go_package = "/;userservice";
+
+message User {
+  string Name = 2;
+  string Password = 3;
+  string Area = 4;
+}
+
+message ReadUserRequest{
+    string name = 1;
+}
+
+message ReadUserResponse {
+    User user = 1;
+}
+
+message ListUserRequest {
+}
+
+message ListUserResponse {
+  repeated User user=1;
+}
+
+service UserService {
+  rpc ReadUser(ReadUserRequest) returns (ReadUserResponse);
+  rpc ListUser(ListUserRequest) returns (ListUserResponse);
+}
