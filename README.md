@@ -1,7 +1,4 @@
 # Technical_Tools
-Various scripts
-<<<<<<< HEAD
-=======
 
 - CV : Computer Vision
 
@@ -14,8 +11,3 @@ Various scripts
 - Other : All other technologies
 
 - Tool : Useful scripts created in python
-
-
-
-
->>>>>>> master
