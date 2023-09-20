@@ -157,30 +157,16 @@
 - fyftyone
 
 
+### Technique
 
-### github
+- Detects, crops, and classifies target objects (od × cls, seg × cls.....)
 
+- Use SAHI to detect small objects (od × SAHI, seg × .....)
 
+- Convert models to onnx or openvino to increase speed (yolov5, yolov8.....)
 
-- https://github.com/facebookresearch/CutLER
+- Perform ensemble inference to improve accuracy.
 
-- https://github.com/XPixelGroup/DiffBIR
+- Perform TTA to improve accuracy.
 
-- https://github.com/kevmo314/magic-copy
-
-- https://github.com/facebookresearch/nougat
-
-- https://github.com/tobran/GALIP
-
-
-- https://github.com/facebookresearch/co-tracker
-
-- https://github.com/JialianW/GRiT
-
-- https://github.com/dinglufe/segment-anything-cpp-wrapper
-
-
-- https://github.com/NVlabs/prismer
-
-
-- https://github.com/hukaixuan19970627/yolov5_obb
+etc.
