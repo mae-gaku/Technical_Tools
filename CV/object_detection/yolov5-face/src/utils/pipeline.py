@@ -3,12 +3,8 @@ import numpy as np
 import json
 import base64
 import time
-
-# Yolov5
-# from utils.augmentations import letterbox
 from utils.general import check_img_size,non_max_suppression_face, scale_coords
 
-# Pytorch-lightning model.
 import torch
 import warnings
 warnings.filterwarnings('ignore')
@@ -24,45 +20,19 @@ class ModelLoad():
 
         ie = Core()
         # model_path = "/home/gaku/yolov5-face/yolov5s-face"
-        network = ie.read_model(model='./modules/yolov5/weights/yolov5l-face.xml', weights='./modules/yolov5/weights/yolov5l-face.bin')
+        network = ie.read_model(model='./model/yolov5/weights/yolov5l-face.xml', weights='./model/yolov5/weights/yolov5l-face.bin')
         network.get_parameters()[0].set_layout(Layout("NCHW"))
 
         self.model1 = ie.compile_model(network, device_name="CPU")
 
 
-class VIPipeline():
+class Pipeline():
     def __init__(self):
         self.device = torch.device('cpu')
 
-        # Flask output.
-        self.height = 0
-        self.width = 0
-        self.display_bbox_list = []
-        self.pred_list = []
-        self.display_cls_name_list = []
-        self.display_comment_list = []
-
-
-    def load_img(self, img):
-        if type(img).__module__ == np.__name__:
-            # (Debug on local)
-            pass
-        else:
-            img = base64.b64decode(img)
-            img = np.fromstring(img, np.uint8)
-            img = cv2.imdecode(img, cv2.IMREAD_ANYCOLOR)
-
-        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        return img, img_rgb
-
-
-    def detect_object(self, input_img,out):
-        # Execute yolov5 detection.
-        # Input: RGB(input_img)
-        start_time = time.perf_counter()
+    def detect_face(self, input_img,out):
         bboxes, class_id_list = [], []
 
-        # try:
         imgsz = (640,640)
         img = letterbox(input_img, new_shape=imgsz)[0]
         # Convert from w,h,c to c,w,h
@@ -70,11 +40,8 @@ class VIPipeline():
         img = np.array(img, dtype=np.float)
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
         img = np.expand_dims(img, 0) 
- 
-        # Inference
-        pred = list(self.model1([img]).values())
 
-        # Apply NMS
+        pred = list(self.model1([img]).values())
         pred = non_max_suppression_face(pred, self.model1_threshold, self.model1_iou_threshold)
 
         for i, det in enumerate(pred):
@@ -87,7 +54,6 @@ class VIPipeline():
             bboxes.append(bboxe)
             self.pred_list += det[j, 4].cpu().numpy()
             class_id_list.append(0)
-            self.display_cls_name_list.append(self.model1_config["class_names"][0])
 
             label = f'face'
             color = (0, 0, 255)
@@ -98,42 +64,5 @@ class VIPipeline():
 
         out.write(input_img)
 
-        self.time_object_detection += time.perf_counter() - start_time
-
         return bboxes, class_id_list
-
-
-    def get_cls_image_list(self, img, class_bboxes, class_id_list):
-        class_image_list = []
-        class_box_list = []
-        for box, _ in zip(class_bboxes, class_id_list):
-            class_img, class_box = self.crop_img_by_box(img, box)
-            class_image_list.append(class_img)
-            class_box_list.append(class_box)
-
-        return class_image_list, class_box_list
-
-
-    def crop_img_by_box(self, img, bbox, margin=False):
-        # Image cropping with bounding box.
-        xmin, ymin, xmax, ymax = bbox
-
-        if margin:
-            h, w = ymax-ymin, xmax-xmin
-            xmin = max(xmin, 0)
-            ymin = max(ymin+int(0.09*h), 0)
-            xmax = min(xmax+int(0*w), img.shape[1])
-            ymax = min(ymax-int(*h), img.shape[0])
-
-        return img[int(ymin):int(ymax), int(xmin):int(xmax)], [int(xmin), int(ymin), int(xmax), int(ymax)]
-
-
-    def to_json(self):
-        self.height = 0
-        self.width = 0
-        self.display_bbox_list = []
-        self.pred_list = []
-        self.display_cls_name_list = []
-        self.display_comment_list = []
-
-        # return res_json
+    
