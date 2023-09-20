@@ -10,14 +10,13 @@ class Inference():
     def __init__(self):
         self.load = ModelLoad()
 
-    def inference(self, img, out, threshold, file="./tmp.jpg"):
+    def inference(self, img, out):
         pipeline = Pipeline()
 
         pipeline.model1 = self.load.model1
         pipeline.model1_class_names = self.load.model1_class_names
         pipeline.model1_threshold = threshold
-        if threshold is None:
-            pipeline.model1_threshold = self.load.model1_threshold
+        pipeline.model1_threshold = self.load.model1_threshold
         pipeline.model1_iou_threshold = self.load.model1_iou_threshold
 
         bboxes, cls_id_list = pipeline.detect_face(img,out)
@@ -42,7 +41,7 @@ if __name__ == '__main__':
         ret, frame = cap.read()
         if not ret:
             break
-        res_json = infer.inference(frame,out , None)  
+        res_json = infer.inference(frame,out)  
     out.release()
     cap.release()
     cv2.destroyAllWindows()
