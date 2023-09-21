@@ -157,6 +157,7 @@
 - fyftyone
 
 
+<<<<<<< HEAD
 
 ### github
 
@@ -184,3 +185,18 @@
 
 
 - https://github.com/hukaixuan19970627/yolov5_obb
+=======
+### Technique
+
+- Detects, crops, and classifies target objects (od × cls, seg × cls.....)
+
+- Use SAHI to detect small objects (od × SAHI, seg × .....)
+
+- Convert models to onnx or openvino to increase speed (yolov5, yolov8.....)
+
+- Perform ensemble inference to improve accuracy.
+
+- Perform TTA to improve accuracy.
+
+etc.
+>>>>>>> master

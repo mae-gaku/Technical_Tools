@@ -3,12 +3,17 @@ import numpy as np
 import json
 import base64
 import time
+<<<<<<< HEAD
 
 # Yolov5
 # from utils.augmentations import letterbox
 from utils.general import check_img_size,non_max_suppression_face, scale_coords
 
 # Pytorch-lightning model.
+=======
+from utils.general import check_img_size,non_max_suppression_face, scale_coords
+
+>>>>>>> master
 import torch
 import warnings
 warnings.filterwarnings('ignore')
@@ -24,12 +29,17 @@ class ModelLoad():
 
         ie = Core()
         # model_path = "/home/gaku/yolov5-face/yolov5s-face"
+<<<<<<< HEAD
         network = ie.read_model(model='./modules/yolov5/weights/yolov5l-face.xml', weights='./modules/yolov5/weights/yolov5l-face.bin')
+=======
+        network = ie.read_model(model='./model/yolov5/weights/yolov5l-face.xml', weights='./model/yolov5/weights/yolov5l-face.bin')
+>>>>>>> master
         network.get_parameters()[0].set_layout(Layout("NCHW"))
 
         self.model1 = ie.compile_model(network, device_name="CPU")
 
 
+<<<<<<< HEAD
 class VIPipeline():
     def __init__(self):
         self.device = torch.device('cpu')
@@ -63,6 +73,15 @@ class VIPipeline():
         bboxes, class_id_list = [], []
 
         # try:
+=======
+class Pipeline():
+    def __init__(self):
+        self.device = torch.device('cpu')
+
+    def detect_face(self, input_img,out):
+        bboxes, class_id_list = [], []
+
+>>>>>>> master
         imgsz = (640,640)
         img = letterbox(input_img, new_shape=imgsz)[0]
         # Convert from w,h,c to c,w,h
@@ -70,11 +89,16 @@ class VIPipeline():
         img = np.array(img, dtype=np.float)
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
         img = np.expand_dims(img, 0) 
+<<<<<<< HEAD
  
         # Inference
         pred = list(self.model1([img]).values())
 
         # Apply NMS
+=======
+
+        pred = list(self.model1([img]).values())
+>>>>>>> master
         pred = non_max_suppression_face(pred, self.model1_threshold, self.model1_iou_threshold)
 
         for i, det in enumerate(pred):
@@ -87,7 +111,10 @@ class VIPipeline():
             bboxes.append(bboxe)
             self.pred_list += det[j, 4].cpu().numpy()
             class_id_list.append(0)
+<<<<<<< HEAD
             self.display_cls_name_list.append(self.model1_config["class_names"][0])
+=======
+>>>>>>> master
 
             label = f'face'
             color = (0, 0, 255)
@@ -98,6 +125,7 @@ class VIPipeline():
 
         out.write(input_img)
 
+<<<<<<< HEAD
         self.time_object_detection += time.perf_counter() - start_time
 
         return bboxes, class_id_list
@@ -137,3 +165,7 @@ class VIPipeline():
         self.display_comment_list = []
 
         # return res_json
+=======
+        return bboxes, class_id_list
+    
+>>>>>>> master
