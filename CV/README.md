@@ -156,36 +156,6 @@
 
 - fyftyone
 
-
-<<<<<<< HEAD
-
-### github
-
-
-
-- https://github.com/facebookresearch/CutLER
-
-- https://github.com/XPixelGroup/DiffBIR
-
-- https://github.com/kevmo314/magic-copy
-
-- https://github.com/facebookresearch/nougat
-
-- https://github.com/tobran/GALIP
-
-
-- https://github.com/facebookresearch/co-tracker
-
-- https://github.com/JialianW/GRiT
-
-- https://github.com/dinglufe/segment-anything-cpp-wrapper
-
-
-- https://github.com/NVlabs/prismer
-
-
-- https://github.com/hukaixuan19970627/yolov5_obb
-=======
 ### Technique
 
 - Detects, crops, and classifies target objects (od × cls, seg × cls.....)
@@ -199,4 +169,3 @@
 - Perform TTA to improve accuracy.
 
 etc.
->>>>>>> master
