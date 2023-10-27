@@ -1,0 +1,6 @@
+path: /home/dataset/images
+train: ./train
+val: ./val
+ 
+nc: 1
+names: [ 'person' ]
