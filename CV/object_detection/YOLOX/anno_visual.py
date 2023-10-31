@@ -66,16 +66,16 @@ def bbox_(img, bboxes, x):
 
     mix_rate += 0.3
     img = cv2.addWeighted(ann_img, mix_rate, img, 1-mix_rate, 0)
-    cv2.imwrite(f"/media/sf_virtualbox/Academy_person/result_image/{x}.jpg", img)
+    cv2.imwrite(f"./{x}.jpg", img)
 
 
 
 if __name__ == "__main__":
 
-    image_path = "/media/sf_virtualbox/Academy_person/images"
-    label_path = "/media/sf_virtualbox/Academy_person/labels"
-    output_image_dir = "/media/sf_virtualbox/Academy_person/result_image"
-    output_label_dir = "/media/sf_virtualbox/Academy_person/result_label"
+    image_path = "./images"
+    label_path = "./labels"
+    output_image_dir = "./result_image"
+    output_label_dir = "./result_label"
     
     os.makedirs(output_image_dir, exist_ok=True)
     os.makedirs(output_label_dir, exist_ok=True)
@@ -115,7 +115,7 @@ if __name__ == "__main__":
         #         fontScale=0.7,
         #         color=(0, 0, 255),
         #     )
-        # cv2.imwrite(f"/media/sf_virtualbox/Academy_person/result_image/{x}.jpg", image)
+        # cv2.imwrite(f"./result_image/{x}.jpg", image)
 
 
         
